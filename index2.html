@@ -1,0 +1,29 @@
+from win10toast import ToastNotifier
+import time
+
+toast = ToastNotifier()
+h1 = int(input("Type your time(HH): "))
+m1 = int(input("Type your minutes(MM): "))
+h2 = int(input("Type hour of your notification(HH): "))
+m2 = int(input("Type minutes of your notification(MM): "))
+text = str(input("Type your message here: "))
+print(h1,":",m1)
+
+while True: 
+    time.sleep(60)
+    m1 += 1
+    if m1 >= 60:
+        m1 -= 60
+        h1 += 1
+    if h1 == 24:
+        h1 == 0    
+    print(h1,":",m1)
+    if h1 + m1 == h2 + m2:
+        toast.show_toast(
+        "Notification",               
+        text,
+        duration = 10,
+        icon_path = "icon.ico",
+        threaded = False,
+        )
+        break
